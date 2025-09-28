@@ -80,7 +80,6 @@ export const fetchAndParse = async (url, metricName, labelFilters) => {
   try {
     const response = await axios.get(url);
     var result = parseAndSum(response.data, metricName, labelFilters);
-    console.log(result);
     return result;
   } catch (error) {
     console.error(`[${metricName}] 데이터 가져오기 실패:`, error.message);
