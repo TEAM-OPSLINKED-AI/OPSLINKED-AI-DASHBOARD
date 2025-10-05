@@ -11,7 +11,7 @@ const DbConnectionChart = () => {
 
   useEffect(() => {
     const getMetrics = async () => {
-      const connections = await fetchAndParse(mysqlUrl, 'mysql_global_status_threads_connected');
+      const connections = await fetchAndParse('/api/mysql/metrics', 'mysql_global_status_threads_connected');
       
       setChartData(prevData => {
         const now = new Date();

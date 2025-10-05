@@ -16,10 +16,15 @@ export default defineConfig(({ mode }) => {
           rewrite: (path) => path.replace(/^\/api\/spring/, ''),
         },
         '/api/mysql': {
-          target: env.VITE_MYSQL_EXPORTER_URL, // process.env에서 값을 읽어옵니다.
+          target: env.VITE_MYSQL_EXPORTER_URL,
           changeOrigin: true,
-          secure: false,      // https가 아닌 http 서버에도 요청
-          rewrite: (path) => path.replace(/^\/api\/mysql/, ''),
+          secure: false,
+          // rewrite 규칙을 명확하게 수정하고 로그를 추가
+          rewrite: (path) => {
+            const newPath = path.replace(/^\/api\/mysql/, '');
+            console.log(`[Vite Proxy] Rewriting path: '${path}' to '${newPath}' for target: ${env.VITE_MYSQL_EXPORTER_URL}`);
+            return newPath;
+          }
         },
         '/api/grafana': {
           target: env.VITE_GRAFANA_API_URL, // process.env에서 값을 읽어옵니다.

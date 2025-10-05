@@ -6,25 +6,34 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #1a1a2e; /* 더 어두운 배경 */
+  background-color: #1a1a2e;
   color: #e0e0e0;
+
+  display: grid;
+  place-items: center;     /* 수직 & 수평 동시 중앙 정렬의 가장 간단한 방법 */
+  min-height: 100vh; 
 }
+
 
 .app-container {
   padding: 20px;
+  width: 80%;
+  max-width: 1400px;
 }
 
 header {
   text-align: center;
-  margin-bottom: 30px;
-  color: #ff8c00; /* 로고 색상 */
+  margin-bottom: 40px; /* 그래프와의 간격을 좀 더 줍니다. */
+  color: #ff8c00;
   font-weight: 300;
-  font-size: 1em; /* 제목 크기 키움 */
+  /* 제목이 잘 보이고 중요해 보이도록 크기를 키웁니다. */
+  font-size: 1em; 
   letter-spacing: 2px;
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  /* 컬럼 개수를 2개로 고정합니다. */
+  grid-template-columns: repeat(2, 1fr); /* Changed */
   gap: 20px;
 }
